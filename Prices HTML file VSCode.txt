@@ -1,0 +1,36 @@
+In templates folder, create file named prices.html
+
+<html>
+    <head>
+        <h2>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label text-align="center" style="background-color:rgb(136, 124, 124);width: 700px ; font-size: 89%;color: aliceblue;">USA HOUSING PRICE PREDICTION</label></h2>
+       </head>
+    <body>
+        <form action="/housing" method="POST" style="background-color: rgb(218, 200, 200); width: 500px; height:290px; padding-left: 20px; ">
+            <br>
+            Avg_Area_Income (eg. 79545) :
+             &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" name="inc" style="padding-block: 3px;"> <br> <br>
+            Avg_Area_House_Age (eg. 5.682) : 
+            &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" name = 'age' style="padding-block: 3px;"> <br> <br>
+            Avg_Area_Number_of_Rooms (eg. 7.009) : &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" name = 'rooms' style="padding-block: 3px;"> <br> <br>
+            Avg_Area_Number_of_Bedrooms (eg. 4.09) : &nbsp;
+            <input type="text" name = 'bedrooms' style="padding-block: 3px;"> <br> <br>
+            Area_Population (eg. 23086.8005) : 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" name = 'pop' style="padding-block: 3px;"> <br> <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" value = "Predict" style="height: 30px ; width:70px; color:rgb(233, 52, 88); font-weight: bold; border-color: rgb(233, 123, 87);">  
+    
+        </form>
+        
+        <h3>
+            <label style="width: 700px ; color: rgb(20, 53, 82);">
+        Predicted Price Of House in USA (USD) : &nbsp; </label>
+        {{prediction}}
+        </h3>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+from flask import Flask,render_template,request,jsonify
+import pickle
+import numpy as np
+
+with open('model_random_forest.pkl','rb') as f:
+    model = pickle.load(f)
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('prices.html')
+
+@app.route('/housing',methods=['POST'])
+def predict():
+    Avg_Area_Income = float(request.form['inc'])
+    Avg_Area_House_Age = float(request.form['age'])
+    Avg_Area_Num_of_Rooms = float(request.form['rooms'])
+    Avg_Area_Num_of_Bedrooms = float(request.form['bedrooms'])
+    Area_Population = float(request.form['pop'])
+
+    data = np.array([Avg_Area_Income,Avg_Area_House_Age,Avg_Area_Num_of_Rooms,
+    Avg_Area_Num_of_Bedrooms,Area_Population],ndmin=2)
+
+
+    result = model.predict(data)
+
+    print(f"Price of the house : {result[0]}")
+    return render_template('prices.html', prediction = result[0])
+
+if __name__ == "__main__":
+    app.run(host='localhost',port=8000,debug=True)
